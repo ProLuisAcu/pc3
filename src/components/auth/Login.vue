@@ -243,3 +243,33 @@ input:focus {
     0 1px 1px rgba(255, 255, 255, 0.2);
 }
 </style>
+<script>
+export default {
+  name: "LoginForm",
+  data() {
+    return {
+      username: "",
+      password: "",
+      error: "",
+      validCredentials: {
+        username: "Luis",
+        password: "12345",
+      },
+    };
+  },
+  methods: {
+    handleSubmit() {
+      if (
+        this.username === this.validCredentials.username &&
+        this.password === this.validCredentials.password
+      ) {
+        // Successful login - Perform your login action (e.g., redirect)
+        this.error = "";
+        this.$emit("login-success"); // Emit an event for parent component
+      } else {
+        this.error = "Invalid username or password";
+      }
+    },
+  },
+};
+</script>
